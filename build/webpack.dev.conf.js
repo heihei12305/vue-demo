@@ -13,8 +13,8 @@ const portfinder = require('portfinder')
 const express = require('express')
 const app = express()
 let apiRouters = express.Router();
-let goodsData = require('./../mock/goods.json');
-app.use('/goods',apiRouters)
+// let goodsData = require('./../mock/goods.json');
+// app.use('/goods',apiRouters)
 
 
 const HOST = process.env.HOST
@@ -54,13 +54,13 @@ const devWebpackConfig = merge(baseWebpackConfig, {
       poll: config.dev.poll,
     },
     before(app){
-    app.get('/goods/list',(req,res)=>{
-        res.json(
-          {
-            errno:0,
-            data:goodsData
-          })
-      })
+    // app.get('/goods/list',(req,res)=>{
+    //     res.json(
+    //       {
+    //         errno:0,
+    //         data:goodsData
+    //       })
+    //   })
     }
   },
   plugins: [
