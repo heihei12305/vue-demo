@@ -11,8 +11,11 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-      //代理插件解决跨域
+     // 代理插件解决跨域
       '/goods':{
+        target:'http://localhost:3000'
+      },
+      '/users/*':{
         target:'http://localhost:3000'
       }
     },

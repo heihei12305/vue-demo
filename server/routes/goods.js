@@ -17,7 +17,7 @@ mongoose.connection.on("disconnected",()=>{
     console.log("MongoDB connected disconnected")
 })
 
-router.get("/",(req,res,next)=>{
+router.get("/list",(req,res,next)=>{
    // res.send('hello goods list .')
    //分页功能实现
     let page = parseInt(req.param("page"));
@@ -69,50 +69,50 @@ router.get("/",(req,res,next)=>{
 })
 
 //加入到购物车
-router.post("/goods/addCart",(req,res,next)=>{
-    var userId='100000',productId = req.body.productId;
-    var User = require('../models/user');
+// router.post("/goods/addCart",(req,res,next)=>{
+//     var userId='100000',productId = req.body.productId;
+//     var User = require('../models/user');
 
-    User.findOne({userId:userId},(err,userDoc)=>{
-        if(err){
-            res.json({
-                status:"1",
-                msg:err.message
-            })
-        }else{
-            console.log("userDoc:"+userDoc);
-            if(userDoc){
-                Goods.findOne({productId:productId},(err1,doc)=>{
-                    if(err1){
-                        res.json({
-                            status:"1",
-                            msg:err.message
-                        })
-                    }else{
-                        if(doc){
-                            doc.productNum = 1;
-                            doc.checked = 1;
-                            User.cartList.push(doc);
-                            User.save(function(err2,doc){
-                                if(err2){
-                                    res.json({
-                                        status:"1",
-                                        msg:err.message
-                                    })
-                                }else{
-                                    res.json({
-                                        status:'0',
-                                        msg:'',
-                                        result:'suc'
-                                    })
-                                }
-                            })
-                        }
-                    }
+//     User.findOne({userId:userId},(err,userDoc)=>{
+//         if(err){
+//             res.json({
+//                 status:"1",
+//                 msg:err.message
+//             })
+//         }else{
+//             console.log("userDoc:"+userDoc);
+//             if(userDoc){
+//                 Goods.findOne({productId:productId},(err1,doc)=>{
+//                     if(err1){
+//                         res.json({
+//                             status:"1",
+//                             msg:err.message
+//                         })
+//                     }else{
+//                         if(doc){
+//                             doc.productNum = 1;
+//                             doc.checked = 1;
+//                             User.cartList.push(doc);
+//                             User.save(function(err2,doc){
+//                                 if(err2){
+//                                     res.json({
+//                                         status:"1",
+//                                         msg:err.message
+//                                     })
+//                                 }else{
+//                                     res.json({
+//                                         status:'0',
+//                                         msg:'',
+//                                         result:'suc'
+//                                     })
+//                                 }
+//                             })
+//                         }
+//                     }
 
-                })
-            }
-        }
-    })
-})
+//                 })
+//             }
+//         }
+//     })
+// })
 module.exports = router;

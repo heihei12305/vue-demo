@@ -97,7 +97,7 @@
           NavFooter,
           NavBread
        },
-       mounted:function(){
+       mounted(){
          this.getGoodsList();
        },
        methods:{
@@ -109,7 +109,7 @@
              priceLevel:this.priceChecked
            }
            this.loading = true;
-          axios.get("/goods",{
+          axios.get("/goods/list",{
             params:param
           }).then((result)=>{
 

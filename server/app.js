@@ -21,6 +21,23 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use((req,res,next)=>{
+  if(req.cookies.userId){
+    next();
+  }else{
+    if(req.originalUrl=='/users/login'||req.originalUrl=='/users/logout'||req.path=='/goods/list'){
+      next();
+    }
+    else{
+      res.json({
+        status:'10001',
+        msg:'no login',
+        result:''
+      })
+    }
+  }
+});
+
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/goods', usersGoods);
