@@ -1,4 +1,4 @@
-# demo1
+# 这是一个基于node-express和vue搭建的简单电商平台，功能陆续增加中！
 
 > A Vue.js project
 
