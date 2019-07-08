@@ -260,3 +260,18 @@ app.use((req,res,next)=>{
 ```
 
 
+****
+****
+****
+ ## 启动方式  :
+ * ### 进入 vue-cli（本代码为demo1）文件夹 
+   * cmd  
+   * npm install 
+   * npm run dev 
+   * 默认 http://localhost:8080
+  
+ * ### 进入  /server/bin 
+   * 运行 www 文件
+   * 或者—>
+      * cmd
+      * pm2 start www (pm2是一个很好的监测node的工具哦，可以了解一下)
