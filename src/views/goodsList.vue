@@ -36,7 +36,7 @@
                       <div class="name">{{item.productName}}</div>
                       <div class="price">{{item.salePrice}}</div>
                       <div class="btn-area">
-                        <a href="javascript:;" class="btn btn--m">加入购物车</a>
+                        <a href="javascript:;" class="btn btn--m" @click="addCart(item.productId)">加入购物车</a>
                       </div>
                     </div>
                   </li>
@@ -88,7 +88,9 @@
             page:1,
             pageSize:8,
             busy:true,
-            loading:false
+            loading:false,
+            productId:null
+
 
           }
        },
@@ -118,7 +120,7 @@
             //console.log(res);
             if(flag){
               this.goodsList = this.goodsList.concat(res.res.list);
-              if(res.result.count===0)
+              if(res.res.count===0)
               {
                 this.busy = true;
               }else
@@ -158,6 +160,20 @@
               this.page++;
               this.getGoodsList(true);
             }, 500);
+        },
+        addCart(productId){
+          axios.post("/goods/addCart",{
+            productId:productId
+          }).then((res)=>{
+            if(parseInt(res.data.status)==0)
+            {
+              alert("add success");
+            }
+            else
+            {
+              alert("msg:"+res.msg);
+            }
+          })
         }
       }
     }

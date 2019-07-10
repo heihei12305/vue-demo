@@ -6,6 +6,8 @@ var produtSchema = new Schema({
     "productName":String,
     "salePrice":Number,
     "productImage":String,
-    "productUrl":String
+    "productUrl":String,
+    "productNum":Number,
+    "checked":Number
 });
 module.exports = mongoose.model('Good',produtSchema);

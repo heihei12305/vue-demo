@@ -270,7 +270,8 @@ app.use((req,res,next)=>{
    * npm run dev 
    * 默认 http://localhost:8080
   
- * ### 进入  /server/bin 
+ * ### 进入  /server/bin
+   *  npm install
    * 运行 www 文件
    * 或者—>
       * cmd

@@ -12,7 +12,7 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
      // 代理插件解决跨域
-      '/goods':{
+      '/goods/*':{
         target:'http://localhost:3000'
       },
       '/users/*':{
