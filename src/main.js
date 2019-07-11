@@ -6,13 +6,14 @@ import {router} from './router'
 import VueLazyLoad from 'vue-lazyload'
 import infiniteScroll from 'vue-infinite-scroll'
 
-
+// import {currency} from './util/currency'
 
 // import {sum,minus} from './util'
 // import * as util from './util'
 //通过*将util封装起来
 
 Vue.config.productionTip = false
+// Vue.filter("currency",currency);
 
 Vue.use(infiniteScroll);
 
