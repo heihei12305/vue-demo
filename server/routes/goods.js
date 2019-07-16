@@ -31,6 +31,7 @@ router.get("/list",(req,res,next)=>{
     if(priceLevel!="all")
     {
         switch (priceLevel){
+            case '-1':priceGt = 0;priceLte = 10000;break;
             case '0':priceGt = 0;priceLte = 1000;break;
             case '1':priceGt = 1000;priceLte = 2000;break;
             case '2':priceGt = 2000;priceLte = 5000;break;

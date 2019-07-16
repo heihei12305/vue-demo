@@ -3,7 +3,7 @@ import Router from 'vue-router'
 // import HelloWorld from '@/components/HelloWorld.vue'
 import goodsList from '../views/goodsList.vue'
 import Cart from '../views/Cart.vue'
-
+import Address from '../views/Address.vue'
 
 
 
@@ -22,6 +22,11 @@ export let router =  new Router({
       path:'/cart',
       name:'Cart',
       component:Cart
+    },
+    {
+      path:'/address',
+      name:'Cart',
+      component:Address
     }
   ]
 })

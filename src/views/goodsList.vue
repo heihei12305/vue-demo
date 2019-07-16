@@ -17,7 +17,7 @@
             <div class="filter stopPop" id="filter" v-bind:class="{'filterby-show':filterBy}">
               <dl class="filter-price">
                 <dt>Price:</dt>
-                <dd><a href="javascript:void(0)" v-bind:class="{'cur':priceChecked==='all'}">All</a></dd>
+                <dd @click="priceChecked=-1"><a href="javascript:void(0)" v-bind:class="{'cur':priceChecked==-1 }" @click="setPriceFilter(-1)">All</a></dd>
                 <dd v-for = "(price,index) in priceFilter" :key="index" @click="priceChecked=index">
                   <a href="javascript:void(0)" @click="setPriceFilter(index)" v-bind:class="{'cur':priceChecked===index}">{{price.startPrice}} - {{price.endPrice}}</a>
                 </dd>
@@ -119,7 +119,7 @@
                 endPrice:'5000.00'
               }
             ],
-            priceChecked:'all',
+            priceChecked:-1,
             filterBy:false,
             overLayFlag:false,
             sortFlag:true,
