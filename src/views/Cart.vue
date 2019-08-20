@@ -59,7 +59,7 @@
                 </div>
                 <div class="cart-tab-5">
                   <div class="cart-item-opration">
-                    <a href="javascript:void(0);" class="item-edit-btn" @click="delCartConfirm(item.productId)">
+                    <a href="javascript:void(0);" class="item-edit-btn" @click="delCartConfirm(item)">
                       <i class="iconfont  icondelete">
                         
                       </i>
@@ -84,7 +84,7 @@
             </div>
             <div class="cart-foot-r">
               <div class="item-total">
-                Item total: <span class = "total-price">{{totalPrice | currency($)}}</span>
+                Item total: <span class = "total-price">{{totalPrice | currency('$')}}</span>
               </div>
               <div class="btn-wrap">
                 <a class="btn btn--red" @click="checkOut" v-bind:class="{'btn--dis':checkedCount===0}">Checkout</a>
@@ -143,7 +143,8 @@
         return {
             cartList:[],
             modalConfirm:false,
-            productId:''
+            productId:'',
+            delItem:''
 
         }
       },
@@ -192,19 +193,21 @@
         closeModal(){
           this.modalConfirm = false;
         },
-        delCartConfirm(productId){
-            this.productId = productId
+        delCartConfirm(item){
+          this.delItem = item;
+            // this.productId = productId
             this.modalConfirm = true;
         },
         delCart(){
           console.log(1);
           axios.post("/users/cart/del",{
-            productId:this.productId
+            productId:this.delItem.productId
           }).then((response)=>{
             let res = response.data;
             if(res.status == '0'){
               this.modalConfirm = false;
               this.init();
+              this.$store.commit("updateCartCount",-this.delItem.productNum);
             }
           })
         },
@@ -243,6 +246,13 @@
             checked:item.checked
           }).then((response)=>{
             let res = response.data;
+            let num = 0;
+            if(flag == 'add'){
+              num = 1;
+            }else if(flag == 'minu'){
+              num = -1;
+            }
+            this.$store.commit("updateCartCount",num);
           })
         },
         checkOut(){
